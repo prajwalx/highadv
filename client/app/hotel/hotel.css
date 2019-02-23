@@ -1,0 +1,50 @@
+body{
+      background-image: url(pic.jpg);
+      font-weight: bold;
+    }
+    span{
+      text-align: right;
+    }
+    input[type=checkbox] {
+      width: 20px;
+      height: 20px;
+    }
+    .close {display: none;}
+
+    @media only screen and (min-width:786px){
+    .PosChkInOut {
+    position: absolute;
+    right:14px;
+    }
+    }
+
+    .AccordianBtn{
+      height:50px;
+      border-radius: 0px;
+      background-color: #eee;
+      border:solid 1px #ccc;
+      padding-top: 10px;
+      margin-bottom: -1px;
+    }
+    .AccordianBtn:hover{
+      background-color: #ccc;
+    }.AccordianOption:hover{
+      background-color: #eee;
+    }
+    .AccordianOption{
+      background-color:white;
+      height:45px;
+      margin: 0px;
+      border-bottom: solid 1px #ccc;
+      border-left: solid 1px #ccc;
+      border-right: solid 1px #ccc;
+
+    }
+    .RotatePlusA{
+      transform: rotate(45deg) scale(2);
+      transition-duration: 0.2s;
+    }
+    .RotatePlusB{
+      transform: scale(2);
+      transition-duration: 0.2s;
+    }

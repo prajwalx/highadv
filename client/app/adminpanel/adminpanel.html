@@ -1,0 +1,531 @@
+
+	<script type="text/javascript">
+		function Controlfun(Id){
+			for (i = 0; i < 5; i++) {
+			  document.getElementsByClassName('all')[i].style.display = "none";
+			}
+			for (i = 0; i < 5; i++) {
+			  var a = document.getElementsByClassName('check')[i];
+			  a.classList.remove("activeNav");
+			}
+			document.getElementsByClassName(Id)[0].style.display = "block";
+			$("#"+Id).addClass('activeNav');
+		}
+		function HotelControlFun(Id){
+			for (i = 0; i < 4; i++) {
+			  document.getElementsByClassName('allHotelOptions')[i].style.display = "none";
+			}
+			document.getElementsByClassName(Id)[0].style.display = "block";
+		}
+		function ControlHotel(){
+			var a = document.getElementsByClassName('HotelControl');
+			a[0].style.display ="none";
+			a[1].style.display = "block";
+			Controlfun('Control4');
+		}
+		var loadFile = function(event,Id) {
+					if (Id == "delhiinput") {
+					    var output = document.getElementById('delhi');
+					    output.src = URL.createObjectURL(event.target.files[0]);
+					}
+					if (Id == "manaliinput") {
+					    var output = document.getElementById('manali');
+					    output.src = URL.createObjectURL(event.target.files[0]);
+					}
+					if (Id == "goainput") {
+					    var output = document.getElementById('goa');
+					    output.src = URL.createObjectURL(event.target.files[0]);
+					}
+		}
+
+	</script>
+	<style type="text/css">
+		body{
+
+			background-color: #f8f9fa;
+
+		}
+		.r3_counter_box {
+			min-width: 300px;
+			min-height: 120px;
+			background: #ffffff;
+			padding: 15px;
+			border: 5px solid #f0f0f0;
+			margin: 5px;
+		}
+
+		.r3_counter_box .fa {
+		  margin-right: 0px;
+		  font-size: 25px;
+		  width: 66px;
+		  height: 66px;
+		  text-align: center;
+		  line-height: 65px;
+		    -webkit-transition: 0.5s all;
+		    -moz-transition: 0.5s all;
+		    -o-transition: 0.5s all;
+		    -ms-transition: 0.5 sall;
+		    transition: 0.5s all;
+		}
+		.r3_counter_box:hover{
+			transform: scale(1.05);
+			transition-duration: 0.4s;
+		}
+		.icon-rounded{
+		  background-color:#7460ee;
+		  color: #ffffff;
+		  border-radius: 50px;
+		  -webkit-border-radius: 50px;
+		  -moz-border-radius: 50px;
+		  -o-border-radius: 50px;
+		  -ms-border-radius: 50px;
+		  font-size: 25px;
+		}
+		.hline-bottom {
+		    border-bottom: 2px solid #f4c542;
+		}
+		.activeNav{
+			background-color: #f4c542;
+			border: 1px solid #f4c542;
+			border-radius: 10px 10px 0px 0px;
+		}
+		.active{
+			background-color: #f4c542;
+		}
+		.ActiveHotelNav{
+			color: rgba(255,255,255,.75);
+		}
+		input {
+		    border:none;
+		    background-image:none;
+		    background-color:transparent;
+		    -webkit-box-shadow: none;
+		    -moz-box-shadow: none;
+		    box-shadow: none;
+		}
+		.HotelNavElement:hover{
+			cursor: pointer;
+		}
+		.alignText{
+			text-align: center;
+		}
+	</style>
+	<style>
+	    body{
+	      background-image: url(pic.jpg);
+	      font-weight: bold;
+	    }
+	    span{
+	      text-align: right;
+	    }
+	    input[type=checkbox] {
+	      width: 20px;
+	      height: 20px;
+	    }
+	    .close {display: none;}
+
+	    @media only screen and (min-width:786px){
+	    .PosChkInOut {
+	    position: absolute;
+	    right:14px;
+	    }
+	    }
+
+	    .AccordianBtn{
+	      height:50px;
+	      border-radius: 0px;
+	      background-color: #eee;
+	      border:solid 1px #ccc;
+	      padding-top: 10px;
+	      margin-bottom: -1px;
+	    }
+	    .AccordianBtn:hover{
+	      background-color: #ccc;
+	    }.AccordianOption:hover{
+	      background-color: #eee;
+	    }
+	    .AccordianOption{
+	      background-color:white;
+	      height:45px;
+	      margin: 0px;
+	      border-bottom: solid 1px #ccc;
+	      border-left: solid 1px #ccc;
+	      border-right: solid 1px #ccc;
+
+	    }
+	    .RotatePlusA{
+	      transform: rotate(45deg) scale(2);
+	      transition-duration: 0.2s;
+	    }
+	    .RotatePlusB{
+	      transform: scale(2);
+	      transition-duration: 0.2s;
+	    }
+  	</style>
+	<style media="screen">
+	    .DataArea{
+	      bottom:60px;
+	      margin-right: 10px;
+	    }
+	    .TextBlack{
+	      color: black;
+	      font-family: sans-serif;
+	      font-size: 15px;
+	    }
+	    .TextAddRoomtype{
+	      font-size: 30px;
+	      font-weight: bold;
+	      padding-top: 50%;
+	      text-align: center;
+	    }
+	    .TextAddRoomtype:hover {
+	    	cursor: pointer;
+	    }
+	    .AddRoomBlock{
+	      box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+	      background: white;
+	      margin-bottom: 50px;
+	      border: none;
+	    }
+	    .AddRoomBlock:hover {
+	      box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2);
+	      border-radius: 5px;
+	    }
+	    .Block{
+	      box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+	      min-height: 560px;
+	      margin-bottom: 50px;
+	      border: none;
+	      min-width: 300px;
+	    }
+	    .Block:hover {
+	      box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2);
+	      border-radius: 5px;
+	    }
+	    .Image{
+	      margin-top: 13px;
+	      width: 100%;
+	      height:auto;
+	    }
+	    .close{
+	          display: none;
+	    }
+	</style>
+	<style>
+		body{
+			background-image: url(pic.jpg);
+		}
+		.inputInventory {
+		    border:none;
+		    background-image:none;
+		    background-color:transparent;
+		    -webkit-box-shadow: none;
+		    -moz-box-shadow: none;
+		    box-shadow: none;
+		    max-width:35px;
+		    text-align: center;
+		    margin: auto;
+		}
+		input[type=number]::-webkit-inner-spin-button,
+		input[type=number]::-webkit-outer-spin-button {
+		  -webkit-appearance: none;
+		  margin: 0;
+		}
+		input[type="number"]{
+		    outline: none;
+		}
+		.close{
+		  display: none;
+		}
+		.TableForDates{
+			padding-top: 50px;
+		}
+		.AvailableRoom{
+			background-color:#FBAD73;
+			color: black;
+			min-width: 125px;
+		}
+		.BlockedRoom{
+			background-color:#CCCCCC;
+			color: white;
+		}
+		.FullRoom{
+			background-color:red;
+			color: white;
+		}
+		.SoldOutRoom{
+			background-color:red;
+			color: white;
+		}
+		.DateNumber{
+			font-size: 20px;
+			color: black;
+		}
+		.RoomEmptyNumber{
+			color: white;
+			font-size:17px;
+			font-weight: bold;
+			background: #373737;
+			border-radius: 20%;
+		}
+		.RoomEmptyNumberDemo{
+			color: white;
+			font-size:18px;
+			background: #373737;
+			border-radius: 10%;
+		}
+		.RoomPricing{
+			color: white;
+			font-size:17px;
+			font-weight: bold;
+			background: #373737;
+			border-radius: 20%;
+			min-width: 100px;
+		}
+		.RoomFilledNumber{
+			color: white;
+			font-size:17px;
+			font-weight: bold;
+			background: #373737;
+			border-radius: 20%;
+		}
+		.RoomFilledNumberDemo{
+			color: white;
+			font-size:13px;
+			background: #373737;
+			border-radius: 13%;
+			cursor: none;
+		}
+		.UseAvailableRoom,.UseSoldOutRoom,.UseRoomEmptyNumber{
+			height: 30px;
+			width: 30px;
+		}
+		.UseRoomEmptyNumber{
+			height: 33px;
+			width: 50px;
+			color: white;
+			font-size:17px;
+			font-weight: bold;
+			background: #484848;
+			border-radius: 20%;
+			padding-left: 19px;
+			padding-top: 6px;
+		}
+		.disabled{
+			cursor: none;
+		}
+		.hide{
+			display: none;
+		}
+	</style>
+
+	<div class="container-fluid">
+		<!--Navbaer-->
+		<div class="row">
+			<nav class="navbar navbar-expand-lg navbar-light bg-light block_1 hline-bottom col-lg-12" style="margin-bottom: 0px;padding-bottom: 0px;">
+			  <div class="float-center">
+			  	<a class="navbar-brand col-lg-2" href="#">Admin Panel</a>
+			  </div>
+			  <button class="navbar-toggler float-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" >
+			    <span class="navbar-toggler-icon"></span>
+			  </button>
+			  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+			    <ul class="navbar-nav mr-auto">
+			      <li id="Control1" onclick="Controlfun(this.id)" class="nav-item check col-lg-2 activeNav">
+			        <div class="btn">Statistics
+					</div>
+			      </li>
+			      <li id="Control2" onclick="Controlfun(this.id)" class="nav-item check col-lg-2">
+			        <div class="btn">State/City
+					</div>
+			      </li>
+			      <li id="Control3" onclick="Controlfun(this.id)" class="nav-item check col-lg-4">
+			        <div class="btn">Hotel View/Block/Prioritize
+					</div>
+			      </li>
+			      <li id="Control4" onclick="Controlfun(this.id)" class="nav-item check col-lg-3">
+			        <div class="btn">Full Control(Hotel)
+					</div>
+			      </li>
+			      <li id="Control5" onclick="Controlfun(this.id)" class="nav-item check col-lg-3">
+			        <div class="btn">Front Page Features
+					</div>
+			      </li>
+			    </ul>
+			  </div>
+			</nav>
+		</div>
+
+		<div id="container1" style="margin-left: 20px;margin-top: 20px;">
+			<!-- Statistics Code-->
+			<div class="Control1 all" style="visibility: visible;">
+				<div class="dropdown col-sm-12" style="min-width: 280px;">
+					<span><b>Show Statistics : </b></span>
+						<button class="btn btn-warning dropdown-toggle" type="button" id="Dropdown" data-toggle="dropdown">
+							Week
+						</button>
+						<div class="dropdown-menu" aria-labelledby="Dropdown">
+							 <a class="dropdown-item disabled" href="#">Week</a>
+							 <a class="dropdown-item" href="#">Month</a>
+							 <a class="dropdown-item" href="#">Year</a>
+						</div>
+				</div>
+				<div class="form-inline">
+	        		<div class="r3_counter_box">
+	        			<div class="float-left" style="margin-right: 5px;">
+	        				<i class="fa fa-rupee icon-rounded"></i>
+	        			</div>
+	                    <div style="padding-top: 10px;">
+	                      <h5><strong>I.N.R. 452</strong></h5>
+	                      <span>Total Revenue</span>
+	                    </div>
+	                </div>
+	        		<div class="r3_counter_box">
+	        			<div class="float-left" style="margin-right: 5px;">
+	        				<i class="fa fa-chart-line icon-rounded"></i>
+	        			</div>
+	                    <div style="padding-top: 10px;">
+	                      <h5><strong>50</strong></h5>
+	                      <span>New Bookings</span>
+	                    </div>
+	                </div>
+	        		<div class="r3_counter_box">
+	        			<div class="float-left" style="margin-right: 5px;">
+	        				<i class="fa fa-bar-chart icon-rounded"></i>
+	        			</div>
+	                    <div style="padding-top: 10px;">
+	                      <h5><strong>10</strong></h5>
+	                      <span>Cancelled Bookings</span>
+	                    </div>
+	                </div>
+	        		<div class="r3_counter_box">
+	        			<div class="float-left" style="margin-right: 5px;">
+	        				<i class="fa fa-users icon-rounded"></i>
+	        			</div>
+	                    <div style="padding-top: 10px;">
+	                      <h5><strong id="NoOfHotel">15</strong></h5>
+	                      <span>New Hotels</span>
+	                    </div>
+	                </div>
+	        	</div>
+	        	<div style="padding-left: 15px;margin-top: 30px;"><b>Chart:</b></div>
+				<div style="text-align: left;margin: 20px;">
+					<div class="col-sm-6">
+						<div id="chartContainer" style="height: 300px; width: 100%;"></div>
+					</div>
+				</div>
+				<div style="padding-left: 15px;margin-top: 50px;"><b>Booking Log</b></div>
+				<table class="table">
+					<thead>
+						<tr>
+							<th>S.No.</th>
+							<th>Booking Id</th>
+							<th>Hotel</th>
+							<th>Email</th>
+							<th>Checkin-Checkout Date</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th scope="row">1</th>
+							<td>Mark Jones</td>
+							<td>Presedium</td>
+							<td>User@Roompapa</td>
+							<td>25 Jan 2019 - 28 Jan 2019</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+			<!-- State/City -->
+			<div class="Control2 all"  style="display: none;margin-bottom: 10px;">
+				<!-- <div style="text-align: center;font-size: 2em">State and City (View/Edit)</div> -->
+				<div>State and Cities listed in the OTA</div>
+				<div style="background-color: white!important" class="form-inline row">
+						<label class="col-sm-2">State*</label>
+						<input required="true" class=" form-control" type="text" name="state" id="stateinput">
+						<label class="col-sm-2">City*</label>
+						<input required="true" class="form-control" type="text" name="city" id="cityinput">
+						<button class="btn btn-success" ng-click="adminpanelCtrl.addcity()" id="addcity">Add</button>
+						<button class="btn btn-warning" ng-click="adminpanelCtrl.updatestatecity()" style="visibility:hidden" id="updatecity"><b>Update</b></button>
+				</div>
+				<table class="table">
+					<thead>
+						<tr>
+							<th>S.No.</th>
+							<th>Sate</th>
+							<th>City</th>
+							<th>Edit</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="x in adminpanelCtrl.allCity">
+							<th scope="row">{{$index+1}}</th>
+							<td><input type="text" name="State" value="{{x.State}}" disabled="true"></td>
+							<td><input type="text" name="City" value="{{x.City}}" disabled="true"></td>
+							<td><button class="btn btn-primary" ng-click="adminpanelCtrl.getValue(x)">Edit</button></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+			<!-- Hotel Prioritize -->
+			<div class="Control3 all" style="display: none;">
+
+				<div class="input-group col-sm-12" style="min-width: 320px;">
+				  <div class="input-group-prepend">
+				  	<div class="input-group-text">
+				  		<i class="fa fa-search" id="basic-addon1"></i>
+				  	</div>
+				  </div>
+				  <input type="text" class="form-control col-3" placeholder="Enter hotel" ng-model="searchhotel">
+				</div>
+				<table class="table">
+				  <thead>
+				    <tr>
+				      <th scope="col">#</th>
+				      <th scope="col">Name</th>
+				      <th scope="col">Priority</th>
+				      <th scope="col">Show</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				    <tr ng-repeat="hotel in adminpanelCtrl.allHotel|filter:searchhotel">
+				      <th scope="row">{{$index+1}}</th>
+				      <td class="btn btn-link" ng-click="adminpanelCtrl.openhoteledit(hotel)">{{hotel.name}}</td>
+				      <td>
+				      	<input class="form-control col-sm-3" type="number" min="1" max="7" value="{{hotel.priority}}">
+				      </td>
+				      <td>
+				      	<input class="active" id="toggle-one" type="checkbox" checked={{hotel.show}}>
+				      </td>
+				    </tr>
+				  </tbody>
+				</table>
+			</div>
+
+			<!--Hotel Full Control-->
+			<div class="Control4 all" style="display: none;">
+				Hotel details
+				<button type="button" name="button" class="btn btn-primary" ng-click="adminpanelCtrl.openhoteledit(hotel)">Edit</button>
+			</div>
+			<!--Cancellation-->
+			<div class="Control5 all" style="display: none;">
+				<div align="center" style="font-weight: bold;font-size: 2em;">City Images</div>
+				<div class="form-inline" style="margin: 10px;"><div class="col-sm-2">Delhi</div>
+					<img class="col-sm-3" id="delhi" src="delhi.jpg" style="min-height: 250px;">
+					<span class="col-sm-2 float-right"><b>Replace Image =></b></span>
+					<input class="col-sm-3" type="file" id="delhiinput" name="file" onchange="loadFile(event,this.id)" style="margin-left: 10px;" />
+				</div>
+				<div class="form-inline" style="margin: 10px;"><div class="col-sm-2">Manali</div>
+					<img class="col-sm-3" id="manali" src="manali.jpg" style="min-height: 250px;">
+					<span class="col-sm-2 float-right"><b>Replace Image =></b></span>
+					<input class="col-sm-3" type="file" id="manaliinput" name="file" onchange="loadFile(event,this.id)" style="margin-left: 10px;" />
+				</div>
+				<div class="form-inline" style="margin: 10px;"><div class="col-sm-2">Goa</div>
+					<img class="col-sm-3" id="goa" src="goa.jpg" style="min-height: 250px;">
+					<span class="col-sm-2 float-right"><b>Replace Image =></b></span>
+					<input class="col-sm-3" type="file" id="goainput" name="file" onchange="loadFile(event,this.id)" style="margin-left: 10px;" />
+				</div>
+			</div>
+		</div>
