@@ -64,18 +64,21 @@ export default function(app) {
    * https://github.com/krakenjs/lusca
    */
   if (env !== 'test' && !process.env.SAUCE_USERNAME) {
-    app.use(lusca({
-      csrf: {
-        angular: true
-      },
-      xframe: 'SAMEORIGIN',
-      hsts: {
-        maxAge: 31536000, //1 year, in seconds
-        includeSubDomains: true,
-        preload: true
-      },
-      xssProtection: true
-    }));
+    /*Disable Lusca to avoid CSRF token Missing Error,
+    If Express Server security is top priority, Update angular-fullstack ^5.0.0
+    */
+    // app.use(lusca({
+    //   csrf: {
+    //     angular: true
+    //   },
+    //   xframe: 'SAMEORIGIN',
+    //   hsts: {
+    //     maxAge: 31536000, //1 year, in seconds
+    //     includeSubDomains: true,
+    //     preload: true
+    //   },
+    //   xssProtection: true
+    // }));
   }
 
   if ('development' === env) {

@@ -608,23 +608,25 @@
             <option value="true">5%</option>
           </select>
         </div>
-
-       <h2 class="col-sm-offset-2">Hotel Images</h2>
+       
        <!-- <input type="file" class="col-sm-offset-1" accept="image/jpeg,image/jpg,image/svg,image/png" id="HotelImages"> -->
        <!-- <button class="btn btn-warning">Upload</button> -->
        <!-- <div class="col-sm-offset-2 col-sm-4">
          (If you want to upload more than 1 image, then select and upload all images one by one.)
-       </div> -->
-       <form action="/newhotel" method="post" enctype="multipart/form-data">
-        <input type="file" name="file-to-upload"/>
-        <input type="submit" name="upload"/>
-        </form>
+       </div> -->       
         <div class="col-sm-12 text-right" >
           <button type="submit" class="btn btn-success btn-md" ng-click="newhotelCtrl.create()">Next Step</button>
         </div>
 
         </div>
       </form>
+      <div class="container">
+        <h2>Hotel Images</h2>
+        <form action="/api/hotels/newhotel" method="post" enctype="multipart/form-data">
+         <input type="file" name="file-to-upload"/>
+         <button type="submit" class="btn btn-success btn-md">Upload</button>
+         </form>
+      </div>      
     </div>
     <script type="text/javascript">
         function sliderChange(x){
@@ -847,4 +849,4 @@
         transition-duration: 0.2s;
       }
 
-</style>
+</style>
